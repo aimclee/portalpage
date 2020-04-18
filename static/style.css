@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Tno,"Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+header {
+    width: 1100px;
+    height: 170px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ffffff;
+    padding: .5rem .5rem 0 .5rem;
+}
+
+.search-form {
+    display: flex;
+    align-items: top;
+}
+
+.search-area {
+    width: 521px;
+    height: 49px;
+    border: 1px solid #ed2000;
+    padding: 0 0 0 12px;
+    font-size: 1rem;
+}
+
+.btn-search {
+    width: 49px;
+    height: 49px;
+    border: 1px solid #ed2000;
+    background-color: #ed2000;
+    color: white;
+}
+
+.rolling-banner-container {
+    background-color: #f2f4f7;
+    width: 300px;
+    height: 100px;
+    align-self: flex-end;
+}
+
+.logo-wrapper {
+    width: 300px;
+}
+
+.logo {
+    width: 180px;
+}
+
+.body-wrapper {
+    background-color: #f2f4f7;
+    height: 100vh;
+}
+
+.main-section {
+    width: 1100px;
+    margin: auto;
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.section-left {
+    margin-right: .5rem;
+}
+
+.main-ad-wrapper {
+    width: 740px;
+    height: 120px;
+}
+
+.fast-news {
+    margin-top: .5rem;
+    padding: .5rem;
+    background: white;
+    border: 1px solid #e2e2e2;
+    display: flex;
+    justify-content: left;
+    font-size: 12px;
+    align-items: center;
+}
+
+.fast-news h3 {
+    margin-right: .5rem;
+}
+.fast-news span {
+    margin-right: .5rem;
+}
+
+.news-feeds {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: .5rem;
+    padding: .5rem;
+    background: white;
+    border: 1px solid #e2e2e2;
+    font-size: 12px;
+}
+
+.news-company {
+    margin-right: .5rem;
+}
+
+.news-feeds .news-company h3 {
+    width: 180px;
+    border: 1px solid #e2e2e2;
+    background-color: #f8f8f8;
+    padding: .3rem;
+    text-align: center;
+}
+
+.company-list{
+    font-size: 14px;
+    width: 180px;
+    height: 150px;
+    border: 1px solid #e2e2e2;
+    background-color: white;
+    padding: .3rem .5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.news {
+    border: 1px solid #e2e2e2;
+    padding: .5rem;
+    width: 100%;
+}
+
+.news ul {
+    list-style: none;
+}
+
+.news-category {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: .5rem;
+}
+
+.news-category li {
+    padding: 0.3rem 0.7rem;
+}
+
+.news-category .active {
+    border-bottom: 3px solid #ed2000
+}
+
+.news-detail {
+    display: flex;
+}
+
+.news-imageNews {
+    position: relative;
+    width: 200px;
+    height: 150px;
+    overflow: hidden;
+    margin-right: .5rem;
+}
+
+.news-imageNews img{
+    max-height: 150px;
+}
+
+.news-imageNews div {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3rem;
+    padding: .5rem;
+    background-color: black;
+    opacity: .4
+}
+
+.news-imageNews span {
+    position: absolute;
+    bottom: 0;
+    padding: .5rem;
+    color: white;
+    font-weight: bold;
+}
+
+.news-line {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.section-right {
+    width: 100%;
+}
+
+.realtime-search-rank {
+    border: 1px solid #e2e2e2;
+    background-color: white;
+    padding: .5rem;
+}
+
+.search-category {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.realtime-search-rank h4 {
+    width: 50%;
+    text-align: center;
+    padding: .5rem 0 .5rem 0;
+    background-color: #a5a5a5;
+    color: white;
+}
+
+.realtime-search-rank .active {
+    background-color: #ed2000;
+}
+
+.search-rank {
+    padding: .5rem;
+    height: 343px;
+    border: 1px solid #e2e2e2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    list-style: none;
+    font-size: 14px;
+}
+
+.search-rank li em {
+    display: inline-block;
+    font-size: 12px;
+    text-align: center;
+    min-width: 15px;
+    min-height: 15px;
+    border: 1px solid #e2e2e2;
+    margin-right: .5rem;
+}
+
+.search-rank .active{
+    background-color: #ed2000;
+    color: white;
+}
+
+.ad-right-nav {
+    margin-top: .5rem;
+    width: 336px;
+}
+
+.ad-right-nav img {
+    width: 100%;
+    height: auto;
+    border: 1px solid #e2e2e2
+}
