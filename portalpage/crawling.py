@@ -22,7 +22,7 @@ def news_searching(base_url):
   #데이터 찾기 (title, img)
   news_item = soup.find_all('title')
   image = soup.select('description img[src]')
-  link = soup.find_all('link')
+  link = soup.select('guid')
   news_title = []
   news_img = []
   news_link = []
@@ -62,11 +62,11 @@ def searchTrend(base_url):
   return merged
 
 
-def search_news(news):
-  title = news_searching(news)
-  return title
+# def search_news(news):
+#   title, img, link = news_searching(news)
+#   return title, img, link
 
-# a = searchTrend('https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN')
-b = search_news('https://vnexpress.net/rss/tin-moi-nhat.rss')
-print(b)
+# # a = searchTrend('https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN')
+# b = search_news('https://vnexpress.net/rss/tin-moi-nhat.rss')
+# print(b)
 

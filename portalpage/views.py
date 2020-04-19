@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 import requests
-from .crawling import searchTrend, search_news
+from .crawling import searchTrend, news_searching
 
 # Create your views here.
 
@@ -24,8 +24,13 @@ def home(request):
         return redirect(r.url)
 
     trends = searchTrend(googletrend)
-    print(trends)
-    news_vnexpress = search_news(vnexpress)
-    news_thanhnien = search_news(thanhnien)
+    vneTitle, vneImg, vneLink = news_searching(vnexpress)
+    news = []
+    for i in vneTitle:
+        news.append(i)
+        for j in vneImg:
+            news.append(j)
+            for k in vneLink:
+                news.append(k)
     
-    return render(request, 'home.html', {'trends':trends, 'vnexpress':news_vnexpress, 'thanhnien':news_thanhnien})
+    return render(request, 'home.html', {'trends': trends, 'news':news})

@@ -56,8 +56,8 @@
                                     <li><a href=""><img src="{{ news_img }}" alt="">{{ news_title }}</a></li>
                                     {% endfor %} -->
                                     <h1>thanhnien</h1>
-                                    {% for news in thanhnien %}
-                                        <li><a href="#">{{ news }}</a></li>
+                                    {% for title, img in defaultdict.news %}
+                                        {{title}}</br>{{img}}
                                     {% endfor %}
                                 <!--<li>Tạm dừng hoạt động của Công Ty PouYuen từ 0h ngà...</li>
                                     <li>100.000 chữ A ủng hộ trẻ tự kỷ trên Facebook Có ngh...</li>
