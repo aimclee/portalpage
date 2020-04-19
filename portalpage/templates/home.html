@@ -51,14 +51,13 @@
                                     <span>Toàn cầu đau đầu đảm bảo lương thực trong đại dịch</span>
                                 </div> -->
                                 <ul class="news-line">
-                                    {{vnexpress}}
+                                    {% for i in title %}
+                                        <li><a href="{{ link }}"><img src="{{ image }}" alt="">{{forloop.counter}}{{ title }}}</a></li>
+                                    {% endfor %}
                                     <!-- {% for news in vnexpress %}
                                     <li><a href=""><img src="{{ news_img }}" alt="">{{ news_title }}</a></li>
                                     {% endfor %} -->
                                     <h1>thanhnien</h1>
-                                    {% for title, img in defaultdict.news %}
-                                        {{title}}</br>{{img}}
-                                    {% endfor %}
                                 <!--<li>Tạm dừng hoạt động của Công Ty PouYuen từ 0h ngà...</li>
                                     <li>100.000 chữ A ủng hộ trẻ tự kỷ trên Facebook Có ngh...</li>
                                     <li>Nhận quà hot từ Call of Duty: Mobile VN ngay ngày đầ...</li>
@@ -79,7 +78,7 @@
                         <div class="list_wrapper">
                             <ul class="search-rank">
                                 {% for news in trends %}
-                                <li><a href="#"><em>{{ forloop.counter }}</em>{{ news }}</a></li>
+                                        <li><a href="#"><em class="active">{{ forloop.counter }}</em>{{ news }}</a></li>
                                 {% endfor %}
                                 <!-- {% for title in trends %}
                                     <li><a href="#">{{ title }}</a></li>

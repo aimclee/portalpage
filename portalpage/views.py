@@ -23,14 +23,15 @@ def home(request):
         r = requests.get(searchEngine, params = queryString)
         return redirect(r.url)
 
-    trends = searchTrend(googletrend)
-    vneTitle, vneImg, vneLink = news_searching(vnexpress)
-    news = []
-    for i in vneTitle:
-        news.append(i)
-        for j in vneImg:
-            news.append(j)
-            for k in vneLink:
-                news.append(k)
     
-    return render(request, 'home.html', {'trends': trends, 'news':news})
+    vne_title, vne_img, vne_link = news_searching(vnexpress)[:10]
+    context = {
+        "trends" : searchTrend(googletrend),
+        "title" : vne_title,
+        "image" : vne_img,
+        "link" : vne_link
+    } 
+
+    
+    
+    return render(request, 'home.html', context=context)
