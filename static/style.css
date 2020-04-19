@@ -3,6 +3,8 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Tno,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-decoration: none;
+    color: black;
 }
 
 header {
@@ -189,7 +191,10 @@ header {
     flex-direction: column;
     justify-content: space-evenly;
 }
+.news-line li {
+    font-size: 14px;
 
+}
 .section-right {
     width: 100%;
 }
@@ -198,6 +203,10 @@ header {
     border: 1px solid #e2e2e2;
     background-color: white;
     padding: .5rem;
+}
+
+.search-rank a {
+    text-decoration: none;
 }
 
 .search-category {
@@ -241,6 +250,26 @@ header {
 .search-rank .active{
     background-color: #ed2000;
     color: white;
+}
+
+.links {
+    padding: .5rem;
+    height: 343px;
+    border: 1px solid #e2e2e2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    list-style: none;
+    font-size: 14px;
+    display: none;
+}
+
+.links img {
+    display: block;
+    margin: auto;
+    max-width: 65px;
+    max-height: 50px;
+
 }
 
 .ad-right-nav {
