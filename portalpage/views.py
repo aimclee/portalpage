@@ -34,5 +34,6 @@ def home(request):
     google_trends = searchTrend(googletrend)
 
     search_vnexpress = news_searching(vnexpress)
+    search_thanhnien = news_searching(thanhnien)
 
-    return render(request, 'home.html', {'google_trends':google_trends, 'main_banner':main_banner, 'sub_banner':sub_banner, 'search_vnexpress':search_vnexpress})
+    return render(request, 'home.html', {'google_trends':google_trends, 'main_banner':main_banner, 'sub_banner':sub_banner, 'search_vnexpress':search_vnexpress, 'search_thanhnien':search_thanhnien})

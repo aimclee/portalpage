@@ -36,9 +36,9 @@ def news_searching(base_url):
       for k in link:
         c = k.get_text()
         news_link.append(c)
-  titleList = news_title[2:8]
-  imgList = news_img[0:6]
-  linkList = news_link[0:6]
+  titleList = news_title[2:10]
+  imgList = news_img[0:8]
+  linkList = news_link[0:8]
   merged = dict([x for x in zip(titleList, zip(imgList, linkList))])
   return merged
 

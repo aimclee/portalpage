@@ -152,49 +152,60 @@ header {
 
 .news-category li {
     padding: 0.3rem 0.7rem;
+    opacity : .5;
 }
+
 
 .news-category .active {
-    border-bottom: 3px solid #ed2000
+    border-bottom: 3px solid #ed2000;
+    opacity : 1;
 }
 
-.news-line{
-    display: grid;
-    justify-content: center;
-    align-content: center;
-    grid-template-columns: repeat(3, 1fr);
-    
+.news-detail {
+    padding: 1rem;
 }
 
-.news-imageNews li a{
-    position: relative;
-    width: 180px;
-    height: 108px;
+.news-imageNews {
+    width: 250px;
+    height: 153px;
     overflow: hidden;
-    margin-right: .5rem;
+    position: relative;
 }
 
-.news-imageNews img{
-    max-height: 180px;
+.news-imageNews img {
+    width: auto;
+    min-height: 153px;
 }
 
 .news-imageNews div {
     position: absolute;
     bottom: 0;
-    width: 100%;
-    height: 3rem;
-    padding: .5rem;
     background-color: black;
-    opacity: .4
+    width: 100%;
+    height: 50px;
+    opacity: 0.4;
 }
 
 .news-imageNews span {
     position: absolute;
     bottom: 0;
     left: 0;
-    padding: .5rem;
     color: white;
-    font-weight: bold;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.news-line {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.news-titles{
+    margin-left: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 14px;
 }
 
 .section-right {
@@ -205,19 +216,6 @@ header {
     border: 1px solid #e2e2e2;
     background-color: white;
     padding: .5rem;
-}
-
-.search-rank a {
-    text-decoration: none;
-}
-
-.search-rank span {
-    font-size: 11px;
-    color: white;
-    background: #ed2000;
-    padding: 2px 4px;
-    border-radius: 5px;
-    margin-left: auto;
 }
 
 .search-category {
@@ -239,7 +237,7 @@ header {
 
 .search-rank {
     padding: .5rem;
-    height: 343px;
+    height: 335px;
     border: 1px solid #e2e2e2;
     display: flex;
     flex-direction: column;
@@ -261,6 +259,20 @@ header {
 .search-rank .active{
     background-color: #ed2000;
     color: white;
+}
+
+.search-rank a {
+    display: flex;
+    text-decoration: none;
+}
+
+.search-rank a span {
+    margin-left: none;
+    font-size: 11px;
+    color: gray;
+    background: #efefef;
+    padding: 2px 4px;
+    border-radius: 5px;
 }
 
 .links {

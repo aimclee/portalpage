@@ -48,27 +48,29 @@
                                 <li><h3>Báo tin tức</h3></li>
                             </ul>
                             <div class="news-detail">
-                                <!-- <div class="news-imageNews">
-                                    <img src="https://i1-suckhoe.vnecdn.net/2020/04/16/huy-1066-1587033076-2578-1587034927.jpg?w=680&h=0&q=100&dpr=1&fit=crop&s=St9FINn-ctdX0TSQRRx5tQ" alt="">
-                                    <div></div>
-                                    <span>Toàn cầu đau đầu đảm bảo lương thực trong đại dịch</span>
-                                </div> -->
                                 <ul class="news-line">
                                     {% for title, link in search_vnexpress.items %}
-                                    <div class="news-imageNews">
-                                        <li><a href="{{link.1}}"><img src="{{link.0}}" alt=""><div></div><span>{{title}}</span></a></li>
-                                    </div>
+                                    {% if forloop.counter == 1 %}
+                                    <div class="news-imageNews"><a href="{{link.1}}"><img src="{{link.0}}" alt=""><div></div><span>{{title}}</span></a></div>
+                                    <div class="news-titles">
+                                    {% else %}
+                                    <li><a href="{{link.1}}"><span>{{title}}</span></a></li>
+                                    {% endif %}
                                     {% endfor %}
-                                    <!-- {% for news in vnexpress %}
-                                    <li><a href=""><img src="{{ news_img }}" alt="">{{ news_title }}</a></li>
-                                    {% endfor %} -->
-                                    <h1>thanhnien</h1>
-                                <!--<li>Tạm dừng hoạt động của Công Ty PouYuen từ 0h ngà...</li>
-                                    <li>100.000 chữ A ủng hộ trẻ tự kỷ trên Facebook Có ngh...</li>
-                                    <li>Nhận quà hot từ Call of Duty: Mobile VN ngay ngày đầ...</li>
-                                    <li>Ứng dụng khai báo y tế NCOVI đạt gần 6,5 triệu lượn...</li>
-                                    <li>“Đi từng ngõ, gõ từng nhà” hỗ trợ người dân khai báo...</li>
-                                    <li>Trên tay Oppo Watch: đệp đôi với Find X2, đeo đã tay...</li> -->
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in search_thanhnien.items %}
+                                    {% if forloop.counter == 1 %}
+                                    <div class="news-imageNews"><a href="{{link.1}}"><img src="{{link.0}}" alt=""><div></div><span>{{title}}</span></a></div>
+                                    <div class="news-titles">
+                                    {% else %}
+                                    <li><a href="{{link.1}}"><span>{{title}}</span></a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                    </div>
                                 </ul>
                             </div>
                         </div>
