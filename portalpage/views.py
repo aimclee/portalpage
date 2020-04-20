@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import requests
 from .crawling import searchTrend, news_searching
+from .models import mainBanner, rollingBanner, subBanner
 
 # Create your views here.
 
@@ -23,15 +24,15 @@ def home(request):
         r = requests.get(searchEngine, params = queryString)
         return redirect(r.url)
 
-    
-    vne_title, vne_img, vne_link = news_searching(vnexpress)[:10]
-    context = {
-        "trends" : searchTrend(googletrend),
-        "title" : vne_title,
-        "image" : vne_img,
-        "link" : vne_link
-    } 
+    # 배너처리
+    main_banner = mainBanner.objects.all()
+    rolling_banner = rollingBanner.objects.all()
+    sub_banner = subBanner.objects.all()
 
-    
-    
-    return render(request, 'home.html', context=context)
+    # 구글트렌드 반환
+    # searchTrend(googletrend)는 검색어, 조회수 2가지를 반환함
+    google_trends = searchTrend(googletrend)
+
+    search_vnexpress = news_searching(vnexpress)
+
+    return render(request, 'home.html', {'google_trends':google_trends, 'main_banner':main_banner, 'sub_banner':sub_banner, 'search_vnexpress':search_vnexpress})

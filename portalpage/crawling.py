@@ -30,16 +30,17 @@ def news_searching(base_url):
   for i in news_item:
     a = i.get_text()
     news_title.append(a)
-
-  for i in image:
-    a = i['src']
-    news_img.append(a)
-
-  for i in link:
-    a = i.get_text()
-    news_link.append(a)
-    
-  return news_title, news_img, news_link
+    for j in image:
+      b = j['src']
+      news_img.append(b)
+      for k in link:
+        c = k.get_text()
+        news_link.append(c)
+  titleList = news_title[2:8]
+  imgList = news_img[0:6]
+  linkList = news_link[0:6]
+  merged = dict([x for x in zip(titleList, zip(imgList, linkList))])
+  return merged
 
 def searchTrend(base_url):
   soup = urlparsing(base_url)
@@ -62,11 +63,7 @@ def searchTrend(base_url):
   return merged
 
 
-# def search_news(news):
-#   title, img, link = news_searching(news)
-#   return title, img, link
-
-# # a = searchTrend('https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN')
-# b = search_news('https://vnexpress.net/rss/tin-moi-nhat.rss')
+# a = searchTrend('https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN')
+# b = news_searching('https://vnexpress.net/rss/tin-moi-nhat.rss')
 # print(b)
 

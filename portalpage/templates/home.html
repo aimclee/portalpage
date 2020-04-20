@@ -29,7 +29,10 @@
             <div class="main-section">
                 <section class="section-left">
                     <div class="main-ad-wrapper">
-                        <img src="https://displayadimg.zumst.com/upload/20200410/3c6a5f49ab6bd35e6c3d38880da4513d.jpg" alt="">
+                        {% for i in main_banner %}
+                            <a href="{{ i.link }}"><img src="{{ i.img.url }}" alt="{{ i.title }}"></a>
+                        {% endfor %}
+                        
                     </div>
                     <!-- <div class="fast-news">
                         <h3>VNExpress</h3><span>></span><span>Bộ trưởng Đào Ngọc Dung: 'Hỗ trợ dân nghè trong tháng 4'</span>
@@ -51,8 +54,10 @@
                                     <span>Toàn cầu đau đầu đảm bảo lương thực trong đại dịch</span>
                                 </div> -->
                                 <ul class="news-line">
-                                    {% for i in title %}
-                                        <li><a href="{{ link }}"><img src="{{ image }}" alt="">{{forloop.counter}}{{ title }}}</a></li>
+                                    {% for title, link in search_vnexpress.items %}
+                                    <div class="news-imageNews">
+                                        <li><a href="{{link.1}}"><img src="{{link.0}}" alt=""><div></div><span>{{title}}</span></a></li>
+                                    </div>
                                     {% endfor %}
                                     <!-- {% for news in vnexpress %}
                                     <li><a href=""><img src="{{ news_img }}" alt="">{{ news_title }}</a></li>
@@ -77,8 +82,12 @@
                         </div>
                         <div class="list_wrapper">
                             <ul class="search-rank">
-                                {% for news in trends %}
-                                        <li><a href="#"><em class="active">{{ forloop.counter }}</em>{{ news }}</a></li>
+                                {% for trend, traffic in google_trends.items %}
+                                    {% if forloop.counter < 4 %}
+                                        <li><a href="#"><em class="active">{{ forloop.counter }}</em>{{ trend }} <span>{{traffic }}</span></a></li>
+                                    {% else %}
+                                        <li><a href="#"><em>{{ forloop.counter }}</em>{{ trend }} <span>{{ traffic }}</span></a></li>
+                                    {% endif %}
                                 {% endfor %}
                                 <!-- {% for title in trends %}
                                     <li><a href="#">{{ title }}</a></li>
@@ -107,7 +116,9 @@
                         </div>
                     </div>
                     <div class="ad-right-nav">
-                        <img src="https://ssl.pstatic.net/tveta/libs/1281/1281563/f6987f1a9efd379943dc_20200402191040394.png" alt="">
+                        {% for i in sub_banner %}
+                            <a href="{{ i.link }}"><img src="{{ i.img.url }}" alt="{{ i.title }}"></a>
+                        {% endfor %}
                     </div>
                     <div class="shopping-list">
                         <div class="shop-list">
