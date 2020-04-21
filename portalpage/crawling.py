@@ -15,35 +15,75 @@ def urlparsing(base_url):
   soup = BeautifulSoup(html, 'lxml')
   return soup
 
-def news_searching(base_url):
-  soup = urlparsing(base_url)
-  items = soup.find_all('item title')
+# 뉴스 스크랩 그루핑함수
+def news_merge(main_title, main_image, main_link, sub_items):
+  news_title = [main_title]
+  news_img = [main_image]
+  news_link = [main_link]
 
-  #데이터 찾기 (title, img)
-  news_item = soup.find_all('title')
-  image = soup.select('description img[src]')
-  link = soup.select('guid')
-  news_title = []
-  news_img = []
-  news_link = []
+  for news in sub_items:
+    news_title.append(news['title'])
+    news_img.append('')
+    news_link.append(news['href'])
   
-  for i in news_item:
-    a = i.get_text()
-    news_title.append(a)
-    for j in image:
-      b = j['src']
-      news_img.append(b)
-      for k in link:
-        c = k.get_text()
-        news_link.append(c)
-  titleList = news_title[2:10]
+  titleList = news_title[0:8]
   imgList = news_img[0:8]
   linkList = news_link[0:8]
-  merged = dict([x for x in zip(titleList, zip(imgList, linkList))])
+
+  merged = dict([x for x in zip(titleList, zip(linkList, imgList))])
   return merged
 
-def searchTrend(base_url):
-  soup = urlparsing(base_url)
+# VNExpress 서칭
+def vnExpress():
+  url = 'https://vnexpress.net/'
+  req = requests.get(url)
+  html = req.content
+  soup = BeautifulSoup(html, 'html.parser')
+
+  # 첫번째 기사 스크랩
+  main_title = soup.select_one(".thumb")['title']
+  main_image = soup.select_one(".thumb img")['src']
+  main_link = soup.select_one(".thumb")['href']
+  
+  # 서브 기사 스크랩
+  sub_items = soup.select('h3.title-news > a')
+  merged = news_merge(main_title, main_image, main_link, sub_items)
+  return merged
+
+def zingNews():
+  url = 'https://zingnews.vn/'
+  req = requests.get(url)
+  html = req.content
+  soup = BeautifulSoup(html, 'html.parser')
+
+  # 첫번째 기사 스크랩
+  main_title = soup.select_one('p.article-thumbnail > a > img')['alt']
+  main_image = soup.select_one('p.article-thumbnail > a > img')['src']
+  main_link = url + soup.select_one('p.article-thumbnail > a')['href']
+  # 서브 기사 스크랩
+  sub_items = soup.select('.article-title > a')
+
+  news_title = [main_title]
+  news_img = [main_image]
+  news_link = [main_link]
+
+  for news in sub_items:
+    news_title.append(news.get_text())
+    news_img.append('')
+    news_link.append(url + news['href'])
+
+  titleList = news_title[0:8]
+  imgList = news_img[0:8]
+  linkList = news_link[0:8]
+
+  merged = dict([x for x in zip(titleList, zip(linkList, imgList))])
+  return merged
+
+def search_trends():
+  url = 'https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN'
+  req = requests.get(url)
+  html = req.content
+  soup = BeautifulSoup(html, 'lxml')
   
   # 데이터 찾기 (title, traffic)
   search_trend = soup.find_all('title')
@@ -61,9 +101,3 @@ def searchTrend(base_url):
   trafficList = trafficList[0:10]
   merged = dict([x for x in zip(trendList, trafficList)])
   return merged
-
-
-# a = searchTrend('https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN')
-# b = news_searching('https://vnexpress.net/rss/tin-moi-nhat.rss')
-# print(b)
-

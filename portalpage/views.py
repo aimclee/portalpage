@@ -1,12 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import requests
-from .crawling import searchTrend, news_searching
+from .crawling import vnExpress, search_trends, zingNews
 from .models import mainBanner, rollingBanner, subBanner
 
-# Create your views here.
-
-# rss 모음
-googletrend = 'https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN'
+# 주소 모음
 vnexpress = 'https://vnexpress.net/rss/tin-moi-nhat.rss' #https://vnexpress.net/rss
 thanhnien = 'https://thanhnien.vn/rss/home.rss' #https://thanhnien.vn/rss.html
 tuoitre = 'https://tuoitre.vn/rss/tin-moi-nhat.rss' #https://tuoitre.vn/rss.htm
@@ -31,9 +28,17 @@ def home(request):
 
     # 구글트렌드 반환
     # searchTrend(googletrend)는 검색어, 조회수 2가지를 반환함
-    google_trends = searchTrend(googletrend)
+    trends = search_trends()
 
-    search_vnexpress = news_searching(vnexpress)
-    search_thanhnien = news_searching(thanhnien)
+    # 뉴스 서치
+    search_vnexpress = vnExpress()
+    # 
+    search_zing = zingNews()
 
-    return render(request, 'home.html', {'google_trends':google_trends, 'main_banner':main_banner, 'sub_banner':sub_banner, 'search_vnexpress':search_vnexpress, 'search_thanhnien':search_thanhnien})
+    return render(request, 'home.html',{
+        'trends':trends,
+        'main_banner':main_banner,
+        'sub_banner':sub_banner,
+        'search_vnexpress':search_vnexpress,
+        'search_zing':search_zing
+        })

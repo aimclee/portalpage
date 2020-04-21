@@ -208,6 +208,11 @@ header {
     font-size: 14px;
 }
 
+.news-titles a span {
+    max-width: 370px;
+    text-overflow: ellipsis;
+}
+
 .section-right {
     width: 100%;
 }

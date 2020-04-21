@@ -34,9 +34,9 @@
                         {% endfor %}
                         
                     </div>
-                    <!-- <div class="fast-news">
+                    <div class="fast-news">
                         <h3>VNExpress</h3><span>></span><span>Bộ trưởng Đào Ngọc Dung: 'Hỗ trợ dân nghè trong tháng 4'</span>
-                    </div> -->
+                    </div>
                     <div class="news-feeds">
                         <div class="news">
                             <ul class="news-category">
@@ -51,10 +51,10 @@
                                 <ul class="news-line">
                                     {% for title, link in search_vnexpress.items %}
                                     {% if forloop.counter == 1 %}
-                                    <div class="news-imageNews"><a href="{{link.1}}"><img src="{{link.0}}" alt=""><div></div><span>{{title}}</span></a></div>
+                                    <div class="news-imageNews"><a href="{{link.0}}"><img src="{{link.1}}" alt=""><div></div><span>{{title}}</span></a></div>
                                     <div class="news-titles">
                                     {% else %}
-                                    <li><a href="{{link.1}}"><span>{{title}}</span></a></li>
+                                    <li><a href="{{link.0}}"><span>{{title}}</span></a></li>
                                     {% endif %}
                                     {% endfor %}
                                     </div>
@@ -62,12 +62,12 @@
                             </div>
                             <div class="news-detail">
                                 <ul class="news-line">
-                                    {% for title, link in search_thanhnien.items %}
+                                    {% for title, link in search_zing.items %}
                                     {% if forloop.counter == 1 %}
-                                    <div class="news-imageNews"><a href="{{link.1}}"><img src="{{link.0}}" alt=""><div></div><span>{{title}}</span></a></div>
+                                    <div class="news-imageNews"><a href="{{link.0}}"><img src="{{link.1}}" alt=""><div></div><span>{{title}}</span></a></div>
                                     <div class="news-titles">
                                     {% else %}
-                                    <li><a href="{{link.1}}"><span>{{title}}</span></a></li>
+                                    <li><a href="{{link.0}}"><span>{{title}}</span></a></li>
                                     {% endif %}
                                     {% endfor %}
                                     </div>
@@ -84,7 +84,7 @@
                         </div>
                         <div class="list_wrapper">
                             <ul class="search-rank">
-                                {% for trend, traffic in google_trends.items %}
+                                {% for trend, traffic in trends.items %}
                                     {% if forloop.counter < 4 %}
                                         <li>
                                             <a href='https://google.com/search?q={{trend}}'>
