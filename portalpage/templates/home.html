@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    {%load static%}
+    {% load static %}
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,9 +86,17 @@
                             <ul class="search-rank">
                                 {% for trend, traffic in google_trends.items %}
                                     {% if forloop.counter < 4 %}
-                                        <li><a href="#"><em class="active">{{ forloop.counter }}</em>{{ trend }} <span>{{traffic }}</span></a></li>
+                                        <li>
+                                            <a href='https://google.com/search?q={{trend}}'>
+                                                <em class="active">{{ forloop.counter }}</em>{{ trend }} 
+                                            
+                                                <span>{{traffic }}</span>
+                                            
+                                            </a>
+                                        </li>
+
                                     {% else %}
-                                        <li><a href="#"><em>{{ forloop.counter }}</em>{{ trend }} <span>{{ traffic }}</span></a></li>
+                                        <li><a href="https://google.com/search?q={{trend}}"><em>{{ forloop.counter }}</em>{{ trend }} <span>{{ traffic }}</span></a></li>
                                     {% endif %}
                                 {% endfor %}
                                 <!-- {% for title in trends %}
