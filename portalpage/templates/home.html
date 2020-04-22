@@ -9,7 +9,11 @@
 </head>
 <body>
     <div class="wrapper">
-        <div></div>
+        <div class="top-menu">
+            <span>홈페이지</span>
+            <span>즐겨찾기</span>
+            <span>광고문의</span>
+        </div>
         <header>
             <div class="logo-container">
                 <img class="logo" src="https://t1.daumcdn.net/daumtop_chanel/op/20170315064553027.png" alt="">
@@ -34,14 +38,14 @@
                         {% endfor %}
                         
                     </div>
-                    <div class="fast-news">
+                    <!-- <div class="fast-news">
                         <h3>VNExpress</h3><span>></span><span>Bộ trưởng Đào Ngọc Dung: 'Hỗ trợ dân nghè trong tháng 4'</span>
-                    </div>
+                    </div> -->
                     <div class="news-feeds">
                         <div class="news">
                             <ul class="news-category">
                                 <li class="active"><h3>VNExpress</h3></li>
-                                <li><h3>Thanh niên</h3></li>
+                                <li><h3>Zing</h3></li>
                                 <li><h3>Tuổi trẻ</h3></li>
                                 <li><h3>Dân Trí</h3></li>
                                 <li><h3>VTC</h3></li>
@@ -142,10 +146,4 @@
 </body>
 <!-- JS script -->
 <script src="/static/script.js"></script>
-<script>
-    let trend_header = document.querySelectorAll('.search-category')
-    trend_header.addEventListener('click', function(){
-        alert('안녕하세요')
-    })
-</script>
 </html>

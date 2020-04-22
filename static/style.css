@@ -6,11 +6,23 @@
     text-decoration: none;
     color: black;
 }
+.top-menu {
+    width: 1084px;
+    margin: auto;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 11px;
+}
+
+.top-menu span {
+    padding: 1rem 1rem 0;
+}
 
 header {
     width: 1100px;
-    height: 170px;
+    height: 120px;
     margin: auto;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -153,6 +165,7 @@ header {
 .news-category li {
     padding: 0.3rem 0.7rem;
     opacity : .5;
+    cursor: pointer;
 }
 
 
@@ -173,8 +186,9 @@ header {
 }
 
 .news-imageNews img {
+    min-width: 250px;
     width: auto;
-    min-height: 153px;
+    height: 100%;
 }
 
 .news-imageNews div {
@@ -182,17 +196,26 @@ header {
     bottom: 0;
     background-color: black;
     width: 100%;
-    height: 50px;
+    height: 45px;
     opacity: 0.4;
 }
 
 .news-imageNews span {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+    max-width: 225px;
+    overflow: hidden;
+    text-overflow: ellipsis;
     position: absolute;
     bottom: 0;
     left: 0;
     color: white;
     padding: 0.5rem;
     font-size: 1rem;
+    line-height: 1.2rem;
+    height: 3rem;
 }
 
 .news-line {
@@ -208,6 +231,14 @@ header {
     font-size: 14px;
 }
 
+.news-titles span {
+    display: block;
+    max-width: 360px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .section-right {
     width: 100%;
 }
@@ -221,6 +252,7 @@ header {
 .search-category {
     display: flex;
     justify-content: space-evenly;
+    cursor: pointer;
 }
 
 .realtime-search-rank h4 {
