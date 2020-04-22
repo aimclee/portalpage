@@ -20,8 +20,8 @@
             </div>
             <div class="search-container">
                 {% csrf_token %} 
-                <form class="search-form" action="" method="POST">
-                    <input class="search-area" type="text" placeholder="Tìm kiếm với Google">
+                <form role="form" class="search-form" action="" method="POST">
+                    <input class="search-area" name="keyword" type="text" placeholder="Tìm kiếm với Google">
                     <input class="btn-search" type="submit">
                 </form>
             </div>
