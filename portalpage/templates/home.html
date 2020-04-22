@@ -47,7 +47,7 @@
                                 <li class="active"><h3>VNExpress</h3></li>
                                 <li><h3>Zing</h3></li>
                                 <li><h3>Tuổi trẻ</h3></li>
-                                <li><h3>Dân Trí</h3></li>
+                                <li><h3>Thanh Niên</h3></li>
                                 <li><h3>VTC</h3></li>
                                 <li><h3>Báo tin tức</h3></li>
                             </ul>
@@ -67,6 +67,32 @@
                             <div class="news-detail">
                                 <ul class="news-line">
                                     {% for title, link in search_zing.items %}
+                                    {% if forloop.counter == 1 %}
+                                    <div class="news-imageNews"><a href="{{link.0}}"><img src="{{link.1}}" alt=""><div></div><span>{{title}}</span></a></div>
+                                    <div class="news-titles">
+                                    {% else %}
+                                    <li><a href="{{link.0}}"><span>{{title}}</span></a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in search_tuoitre.items %}
+                                    {% if forloop.counter == 1 %}
+                                    <div class="news-imageNews"><a href="{{link.0}}"><img src="{{link.1}}" alt=""><div></div><span>{{title}}</span></a></div>
+                                    <div class="news-titles">
+                                    {% else %}
+                                    <li><a href="{{link.0}}"><span>{{title}}</span></a></li>
+                                    {% endif %}
+                                    {% endfor %}
+                                    </div>
+                                </ul>
+                            </div>
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in search_thanhnien.items %}
                                     {% if forloop.counter == 1 %}
                                     <div class="news-imageNews"><a href="{{link.0}}"><img src="{{link.1}}" alt=""><div></div><span>{{title}}</span></a></div>
                                     <div class="news-titles">

@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import requests
-from .crawling import vnExpress, search_trends, zingNews
+from .crawling import vnExpress, search_trends, zingNews, tuoiTre, thanhNien
 from .models import mainBanner, rollingBanner, subBanner
+from django.views.decorators.csrf import csrf_exempt
 
 # 주소 모음
 vnexpress = 'https://vnexpress.net/rss/tin-moi-nhat.rss' #https://vnexpress.net/rss
@@ -11,7 +12,9 @@ vtc = 'https://vtc.vn/rss/feed.rss' #https://www.nhandan.org.vn/rss
 baotintuc = 'https://baotintuc.vn/tin-moi-nhat.rss'
 baodautu = 'https://baodautu.vn/trang-chu.rss'
 forbesvietnam = 'https://forbesvietnam.com.vn/rss/home.rss'
+zing = 'https://zingnews.vn/'
 
+@csrf_exempt
 def home(request):
     # 구글 검색 (CSRF 오류남)
     if request.method == 'POST':
@@ -34,11 +37,15 @@ def home(request):
     search_vnexpress = vnExpress()
     # 
     search_zing = zingNews()
+    search_tuoitre = tuoiTre()
+    search_thanhnien = thanhNien()
 
     return render(request, 'home.html',{
         'trends':trends,
         'main_banner':main_banner,
         'sub_banner':sub_banner,
         'search_vnexpress':search_vnexpress,
-        'search_zing':search_zing
+        'search_zing':search_zing,
+        'search_tuoitre':search_tuoitre,
+        'search_thanhnien':search_thanhnien,
         })
