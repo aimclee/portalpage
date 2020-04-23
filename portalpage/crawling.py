@@ -8,11 +8,12 @@ from bs4.builder import builder_registry
 if hasattr(ssl, '_create_unverified_context'):
   ssl._create_default_https_context = ssl._create_unverified_context
 
+# 사이트 파싱 함수
 def urlparsing(base_url):
   url = base_url
   req = requests.get(url)
   html = req.content
-  soup = BeautifulSoup(html, 'lxml')
+  soup = BeautifulSoup(html, 'html.parser')
   return soup
 
 # 뉴스 스크랩 그루핑함수
@@ -76,6 +77,63 @@ def zingNews():
   imgList = news_img[0:8]
   linkList = news_link[0:8]
 
+  merged = dict([x for x in zip(titleList, zip(linkList, imgList))])
+  return merged
+
+def tuoiTre():
+  url = 'https://tuoitre.vn/'
+  req = requests.get(url)
+  html = req.content
+  soup = BeautifulSoup(html, 'html.parser')
+
+  # 첫번째 기사 스크랩
+  main_title = soup.select_one('.focus-first > a > img')['alt']
+  main_image = soup.select_one('.focus-first > a > img')['src']
+  main_link = url + soup.select_one('.focus-first > a')['href']
+  # 서브 기사 스크랩
+  sub_items = soup.select('.title-name > a')
+
+  news_title = [main_title]
+  news_img = [main_image]
+  news_link = [main_link]
+
+  for news in sub_items:
+    news_title.append(news.get_text())
+    news_img.append('')
+    news_link.append(url + news['href'])
+
+  titleList = news_title[0:8]
+  imgList = news_img[0:8]
+  linkList = news_link[0:8]
+
+  merged = dict([x for x in zip(titleList, zip(linkList, imgList))])
+  return merged
+
+def thanhNien():
+  url = 'https://thanhnien.vn/'
+  req = requests.get(url)
+  html = req.content
+  soup = BeautifulSoup(html, 'html.parser')
+
+  # 첫번째 기사 스크랩
+  main_title = soup.select_one('.highlight > article > a')['title']
+  main_image = soup.select_one('.highlight > article > a > img')['src']
+  main_link = url + soup.select_one('.highlight > article > a')['href']
+  # 서브 기사 스크랩
+  sub_items = soup.select('.feature > article > h2 > a')
+
+  news_title = [main_title]
+  news_img = [main_image]
+  news_link = [main_link]
+
+  for news in sub_items:
+    news_title.append(news.get_text())
+    news_img.append('')
+    news_link.append(url + news['href'])
+
+  titleList = news_title[0:8]
+  imgList = news_img[0:8]
+  linkList = news_link[0:8]
   merged = dict([x for x in zip(titleList, zip(linkList, imgList))])
   return merged
 
