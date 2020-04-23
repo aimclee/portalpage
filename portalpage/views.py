@@ -17,9 +17,9 @@ zing = 'https://zingnews.vn/'
 @csrf_exempt
 def home(request):
     if request.method == 'POST':
-        keyword = request.POST.get('keyword') #이부분에 뭐가 들어가야 html에서 입력한 값이 들어오나요?
+        keyword = request.POST.get('keyword')
         queryString = {'q': keyword}
-        searchEngine = 'https://www.google.com/search'
+        searchEngine = 'https://www.google.com/search?'
         r = requests.get(searchEngine, params = queryString)
         return redirect(r.url)
 

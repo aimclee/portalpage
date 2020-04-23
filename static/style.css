@@ -68,7 +68,7 @@ header {
 
 .body-wrapper {
     background-color: #f2f4f7;
-    height: 100vh;
+    height: 100%;
 }
 
 .main-section {
@@ -94,23 +94,55 @@ header {
     height: auto;
 }
 
-.fast-news {
+.user_count {
     margin-top: .5rem;
-    padding: .5rem;
+    padding: 1rem;
     background: white;
     border: 1px solid #e2e2e2;
     display: flex;
-    justify-content: left;
-    font-size: 12px;
+    justify-content: center;
+    font-size: 1rem;
     align-items: center;
+    background-image: url('https://i.picsum.photos/id/724/740/57.jpg');
+    position: relative;
 }
 
-.fast-news h3 {
-    margin-right: .5rem;
+.user_count div {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    opacity: .5;
 }
-.fast-news span {
-    margin-right: .5rem;
+
+.user_count h3 {
+    margin: 0 .5rem;
+    color: white;
+    z-index:2;
 }
+
+.user_count span {
+    color: white;
+    z-index:2;
+}
+
+.user_count a {
+    margin-left: 1rem;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 4px 8px;
+    color: white;
+    z-index:3;
+    cursor: pointer;
+}
+
+.user_count a:hover {
+    background: white;
+    color: black;
+}
+
+
 
 .news-feeds {
     display: flex;
@@ -160,6 +192,7 @@ header {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: .5rem;
+    border-bottom: .5px solid #a5a5a5;
 }
 
 .news-category li {
@@ -265,13 +298,32 @@ header {
 
 .realtime-search-rank .active {
     background-color: #ed2000;
-    /* background-color: #efefef; */
+}
+
+.search_wrapper {
+    border: 1px solid #e2e2e2;
+}
+.list_wrapper {
+    background-color: #ed2000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list_wrapper h3 {
+    padding: .5rem;
+    color: white;
+}
+
+.list_wrapper a {
+    padding: .5rem;
+    color: white;
+    font-size: 11px;
 }
 
 .search-rank {
-    padding: .5rem;
-    height: 335px;
-    border: 1px solid #e2e2e2;
+    padding: 0 .5rem;
+    height: 328px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -316,22 +368,30 @@ header {
 
 .links {
     padding: .5rem;
-    height: 343px;
+    height: 334px;
     border: 1px solid #e2e2e2;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, .5fr);
     text-align: center;
     list-style: none;
     font-size: 14px;
     display: none;
 }
 
-.links img {
-    display: block;
-    margin: auto;
-    max-width: 65px;
-    max-height: 50px;
+.links li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+}
 
+.links li:hover {
+    background-color: #e2e2e2;
+}
+
+.links img {
+    max-width: 110px;
+    height: 60px;
 }
 
 .ad-right-nav {
@@ -343,4 +403,29 @@ header {
     width: 100%;
     height: auto;
     border: 1px solid #e2e2e2
+}
+
+footer {
+    background-color: white;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer h4 {
+    font-size: 1.5rem;
+}
+
+footer p {
+    font-size: 12px;
+}
+
+.bottom-menu {
+    width: 1084px;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-around;
+    font-size: 12px;
 }
