@@ -19,9 +19,15 @@ def urlparsing(base_url):
 # 뉴스 스크랩 그루핑함수
 def news_merge(news_title, news_img, news_link):
   # 리스트자르기
+<<<<<<< HEAD
 	titleList = news_title[0:12]
 	imgList = news_img[0:12]
 	linkList = news_link[0:12]
+=======
+  titleList = news_title[0:5]
+  imgList = news_img[0:12]
+  linkList = news_link[0:5]
+>>>>>>> 4792e19df37c64b6b186f799d9075786212d2365
 
 	merged = dict([x for x in zip(titleList, zip(linkList, imgList))])
 	return merged
@@ -31,11 +37,18 @@ def zingNews():
 	url = 'https://zingnews.vn'
 
   # 기사 스크랩
+<<<<<<< HEAD
 	news = soup.select('p.article-thumbnail > a')
 	title = soup.select('p.article-title')
 	# images = soup.select('.article-thumbnail > a > img')
 	imgDataSrc = soup.select('img[data-src]')
 	link = soup.select('p.article-thumbnail > a')
+=======
+  news = soup.select('p.article-thumbnail > a')
+  title = soup.select('p.article-title')
+  images = soup.select('img[data-src]')
+  link = soup.select('p.article-thumbnail > a')
+>>>>>>> 4792e19df37c64b6b186f799d9075786212d2365
 
   # 이미지가 lazy loading 인경우 해당 이미지 attr 변경
 	# for i in images:
@@ -51,6 +64,7 @@ def zingNews():
 	# news_img = [news['src'] for news in imgDataSrc]
 	# news_link = [news['href'] for news in link]
 
+<<<<<<< HEAD
 #   각 리스트에 스크랩한 기사 추가
 	for news in title:
 		news_title.append(news.text)
@@ -60,6 +74,15 @@ def zingNews():
 		news_img.append(news['data-src'])
 	# for news in unveil_images:
 	# 	news_img.append(news['src'])
+=======
+  # 각 리스트에 스크랩한 기사 추가
+  for news in title:
+    news_title.append(news.text)
+  for news in link:
+    news_link.append(url + news['href'])
+  for news in images:
+    news_img.append(news['data-src'])
+>>>>>>> 4792e19df37c64b6b186f799d9075786212d2365
 
   # 딕셔너리화
 	merged = news_merge(news_title, news_img, news_link)

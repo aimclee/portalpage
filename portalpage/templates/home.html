@@ -36,14 +36,15 @@
                         {% for i in main_banner %}
                             <a href="{{ i.link }}"><img src="{{ i.img.url }}" alt="{{ i.title }}"></a>
                         {% endfor %}
-                        
                     </div>
                     <div class="news-board">
                         <div class="backboard">
-                            <img src="" alt="">
-                            <span>HOT</span>
-                            <h3>블록체인으로 여가 포인트 통합...밀크, 야놀자와 서비스 시동</h3>
-                            <span>블록체인 여행·여가 포인트 통합 프로젝트 '밀크(MiL.k)'를 운영 중인 밀크파트너스는 밀크 애플리케이션 내에 야놀자 계정 연동 기능을 지원하며 본격적인 서비스 에 나선다고 24일 밝혔다.</span>
+                            <div class="background-content">
+                                <span class="backbroard-cat">HOT</span>
+                                <h3 class="backboard-title">블록체인으로 여가 포인트 통합...밀크, 야놀자와 서비스 시동</h3>
+                                <span class="backboard-desc">블록체인 여행·여가 포인트 통합 프로젝트 '밀크(MiL.k)'를 운영 중인 밀크파트너스는 밀크 애플리케이션 내에 야놀자 계정 연동 기능을 지원하며 본격적인 서비스 에 나선다고 24일 밝혔다.</span>
+                            </div>
+                            <img src="https://picsum.photos/444/250" alt="">
                         </div>
                         <div class="newest">
                             <div class="newest-header">
@@ -52,7 +53,7 @@
                             </div>
                             <div class="newest-row">
                             {% for news in search_zing %}
-                                <span>{{ news.title }}</span>
+                                <a href=""><span>{{ news.title }}</span></a>
                             {% endfor %}
                             </div>
                         </div>
@@ -63,7 +64,6 @@
                     </div>
                     <div class="news-feeds">
                         <div class="news">
-                            <hr>
                             <ul class="news-category">
                                 <li class="active"><h3>Xã hội</h3></li>
                                 <li><h3>Thế giới</h3></li>
