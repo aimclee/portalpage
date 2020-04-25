@@ -19,51 +19,55 @@ def urlparsing(base_url):
 # 뉴스 스크랩 그루핑함수
 def news_merge(news_title, news_img, news_link):
   # 리스트자르기
-  titleList = news_title[0:5]
+  titleList = news_title[0:12]
   imgList = news_img[0:12]
-  linkList = news_link[0:5]
+  linkList = news_link[0:12]
 
-  merged = dict([x for x in zip(titleList, zip(linkList, imgList))])
+  merged = dict([x for x in zip(titleList, zip(imgList, linkList))])
   return merged
 
-def zingNews():
-  soup = urlparsing('https://zingnews.vn/the-gioi.html')
-  url = 'https://zingnews.vn'
+def search_main():
+  soup = urlparsing('https://vnexpress.net/')
 
   # 기사 스크랩
-  news = soup.select('p.article-thumbnail > a')
-  title = soup.select('p.article-title')
-  images = soup.select('img[data-src]')
-  link = soup.select('p.article-thumbnail > a')
-
-  # 이미지가 lazy loading 인경우 해당 이미지 attr 변경
-  # for i in images:
-  #   if i['data-src']:
-  #     i['src'] = i['data-src']
-  #     del i['data-src']
+  title = soup.select('.item-news > .thumb-art > a')
+  images = soup.select('.item-news > .thumb-art > a > picture > img')
+  desc = soup.select('.item-news > .description')
+  link = soup.select('.item-news > .thumb-art > a')
 
   # 기사 넣을 빈 리스트생성
-  news_title, news_img, news_link = [], [], []
+  news_title = [news['title'] for news in title]
+  news_img = [news['src'] for news in images]
+  news_desc = [news.text for news in desc]
+  news_link = [news['href'] for news in link]
 
-  # 이걸로 대체하고싶지만 img부분에 url이 추가되어야함...
-  # news_title = [[news.text for news in title]]
-  # news_img = [news['src'] for news in image]
-  # news_link = [news['href'] for news in link]
+  titleList = news_title[0:6]
+  imgList = news_img[0:6]
+  linkList = news_link[0:6]
+  descList = news_desc[0:6]
 
-  # 각 리스트에 스크랩한 기사 추가
-  for news in title:
-    news_title.append(news.text)
-  for news in link:
-    news_link.append(url + news['href'])
-  for news in images:
-    news_img.append(news['data-src'])
+  dic = {}
+  for i in range(len(titleList)):
+    dic[titleList[i]] = [imgList[i], linkList[i], descList[i]]
+  
+  return dic
+
+def thegioi():
+  soup = urlparsing('https://vnexpress.net/the-gioi')
+
+  # 기사 스크랩
+  title = soup.select('.item-news > .thumb-art > a')
+  images = soup.select('.item-news > .thumb-art > a > picture > img')
+  link = soup.select('.item-news > .thumb-art > a')
+
+  # 기사 넣을 빈 리스트생성
+  news_title = [news['title'] for news in title]
+  news_img = [news['src'] for news in images]
+  news_link = [news['href'] for news in link]
 
   # 딕셔너리화
   merged = news_merge(news_title, news_img, news_link)
   return merged
-
-a = zingNews()
-print(a)
 
 def search_trends():
   url = 'https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN'
@@ -87,3 +91,7 @@ def search_trends():
   trafficList = trafficList[0:10]
   merged = dict([x for x in zip(trendList, trafficList)])
   return merged
+
+
+answer = search_main()
+print(answer)

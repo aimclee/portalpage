@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import requests
-from .crawling import search_trends, zingNews
+from .crawling import search_trends, search_main, thegioi
 from .models import mainBanner, rollingBanner, subBanner
 from django.views.decorators.csrf import csrf_exempt
 
@@ -24,20 +24,22 @@ def home(request):
         return redirect(r.url)
 
     # 배너처리
-    main_banner = mainBanner.objects.all()
+    main_banner = mainBanner.objects.all().order_by('?')
     rolling_banner = rollingBanner.objects.all()
-    sub_banner = subBanner.objects.all()
+    sub_banner = subBanner.objects.all().order_by('?')
 
     # 구글트렌드 반환
     # searchTrend(googletrend)는 검색어, 조회수 2가지를 반환함
     trends = search_trends()
 
     # 카테고리 서치
-    search_zing = zingNews()
+    news_main = search_main()
+    news_thegioi = thegioi()
 
     return render(request, 'home.html',{
         'trends':trends,
+        'news_main':news_main,
         'main_banner':main_banner,
         'sub_banner':sub_banner,
-        'search_zing':search_zing,
+        'news_thegioi':news_thegioi,
         })
