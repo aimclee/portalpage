@@ -160,6 +160,7 @@ header {
     margin-top: .5rem;
     font-size: 16px;
     color: white;
+    letter-spacing: -.5px;
 }
 
 .newest-header span {
@@ -291,6 +292,16 @@ header {
     color: #FF5252;
 }
 
+.news-line {
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(4, .6fr);
+    row-gap: 18px;
+    column-gap: 18px;
+    justify-content: center;
+    align-items: center;
+}
+
 .news-imageNews {
     width: 169px;
     overflow: hidden;
@@ -300,7 +311,6 @@ header {
 
 .news-line a div {
     height: 3.5rem;
-    display: flex;
     background-color: #f6f6fa;
 }
 
@@ -324,30 +334,31 @@ header {
     letter-spacing: -.5px;
 }
 
-.news-line {
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(4, .6fr);
-    row-gap: 18px;
-    column-gap: 18px;
-    justify-content: center;
-    align-items: center;
+/* .news-imageNews span {
+    display: none;
+} */
+
+.news-line .desc {
+    height: 100%;
 }
 
-.news-titles{
-    margin-left: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 14px;
+.news-line .desc a div span {
+    margin: .5rem;
 }
 
-.news-titles span {
-    display: block;
-    max-width: 360px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.news-line .desc a div span:first-child {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.news-line .desc a div span:last-child {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    height: 6.5rem;
+}
+
+.news-line .desc img {
+    display: none;
 }
 
 .section-right {
@@ -466,7 +477,7 @@ header {
 
 .ad-right-nav {
     margin-top: 1rem;
-    width: 336px;
+    width: 100%;
 }
 
 .ad-right-nav img {

@@ -52,7 +52,7 @@
                         </div>
                         <div class="newest">
                             <div class="newest-header">
-                                <h3>최신뉴스</h3>
+                                <h3>Tin mới nhất</h3>
                                 <span>MORE</span>
                             </div>
                             <div class="newest-row">
@@ -63,20 +63,35 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="user_count">
+                    <div class="user_count">
                         <div></div>
                         <span>Đã có </span><h3>100,728</h3><span> đang dùng Weli!</span><a>Đặt làm trang chủ</a>
-                    </div> -->
+                    </div>
                     <div class="news-feeds">
                         <div class="news">
                             <ul class="news-category">
-                                <li class="active"><h3>Thế giới</h3></li>
+                                <li class="active"><h3>Xem nhiều</h3></li>
+                                <li><h3>Thế giới</h3></li>
                                 <li><h3>Giải trí</h3></li>
                                 <li><h3>Thể Thao</h3></li>
                                 <li><h3>Công nghẹ</h3></li>
-                                <li><h3>Thời trang</h3></li>
                                 <li><h3>Sức khoẻ</h3></li>
                             </ul>
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in news_xemnhieu.items %}
+                                    <div class="news-imageNews">
+                                        <a href="{{link.1}}">
+                                            <img src="{{link.0}}" alt="">
+                                            <div>
+                                                <span>{{title}}</span>
+                                                <span>{{ link.2 }}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                             <div class="news-detail">
                                 <ul class="news-line">
                                     {% for title, link in news_thegioi.items %}
@@ -122,20 +137,6 @@
                             <div class="news-detail">
                                 <ul class="news-line">
                                     {% for title, link in news_congnghe.items %}
-                                    <div class="news-imageNews">
-                                        <a href="{{link.1}}">
-                                            <img src="{{link.0}}" alt="">
-                                            <div>
-                                                <span>{{title}}</span>
-                                            </div>
-                                        </a>
-                                    </div>
-                                    {% endfor %}
-                                </ul>
-                            </div>
-                            <div class="news-detail">
-                                <ul class="news-line">
-                                    {% for title, link in news_doisong.items %}
                                     <div class="news-imageNews">
                                         <a href="{{link.1}}">
                                             <img src="{{link.0}}" alt="">

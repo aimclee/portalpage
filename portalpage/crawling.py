@@ -21,7 +21,7 @@ def rss_crawling(soup):
   title = soup.select('item title')
   images = soup.select('description img')
   link = soup.select('guid')
-  desc = soup.select('description')
+  desc = soup.select('item > description')
 
   # 기사 넣을 빈 리스트생성
   news_title = [news.text for news in title]
@@ -90,8 +90,8 @@ def congnghe():
   dic = rss_crawling(soup)
   return dic
 
-def doisong():
-  html = urlparsing('https://vnexpress.net/rss/gia-dinh.rss')
+def xemnhieu():
+  html = urlparsing('https://vnexpress.net/rss/tin-xem-nhieu.rss')
   soup = BeautifulSoup(html, 'lxml')
   dic = rss_crawling(soup)
   return dic
@@ -125,6 +125,5 @@ def search_trends():
   merged = dict([x for x in zip(trendList, trafficList)])
   return merged
 
-
-answer = thegioi()
-print(answer)
+a = xemnhieu()
+print(a)
