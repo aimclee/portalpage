@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import requests
-from .crawling import vnExpress, search_trends, zingNews, tuoiTre, thanhNien
+from .crawling import search_trends, zingNews
 from .models import mainBanner, rollingBanner, subBanner
 from django.views.decorators.csrf import csrf_exempt
 
@@ -32,19 +32,12 @@ def home(request):
     # searchTrend(googletrend)는 검색어, 조회수 2가지를 반환함
     trends = search_trends()
 
-    # 뉴스 서치
-    search_vnexpress = vnExpress()
-    # 
+    # 카테고리 서치
     search_zing = zingNews()
-    search_tuoitre = tuoiTre()
-    search_thanhnien = thanhNien()
 
     return render(request, 'home.html',{
         'trends':trends,
         'main_banner':main_banner,
         'sub_banner':sub_banner,
-        'search_vnexpress':search_vnexpress,
         'search_zing':search_zing,
-        'search_tuoitre':search_tuoitre,
-        'search_thanhnien':search_thanhnien,
         })
