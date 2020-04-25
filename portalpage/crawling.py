@@ -19,9 +19,9 @@ def urlparsing(base_url):
 # 뉴스 스크랩 그루핑함수
 def news_merge(news_title, news_img, news_link):
   # 리스트자르기
-  titleList = news_title[0:12]
+  titleList = news_title[0:5]
   imgList = news_img[0:12]
-  linkList = news_link[0:12]
+  linkList = news_link[0:5]
 
   merged = dict([x for x in zip(titleList, zip(linkList, imgList))])
   return merged
@@ -33,7 +33,7 @@ def zingNews():
   # 기사 스크랩
   news = soup.select('p.article-thumbnail > a')
   title = soup.select('p.article-title')
-  images = soup.select('.article-thumbnail > a > img')
+  images = soup.select('img[data-src]')
   link = soup.select('p.article-thumbnail > a')
 
   # 이미지가 lazy loading 인경우 해당 이미지 attr 변경
@@ -56,7 +56,7 @@ def zingNews():
   for news in link:
     news_link.append(url + news['href'])
   for news in images:
-    news_img.append(news['src'])
+    news_img.append(news['data-src'])
 
   # 딕셔너리화
   merged = news_merge(news_title, news_img, news_link)
