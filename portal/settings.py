@@ -26,6 +26,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'portalpage',
+    # 'random_image',
+    # 'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
