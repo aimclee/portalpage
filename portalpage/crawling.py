@@ -13,21 +13,35 @@ def urlparsing(base_url):
 	url = base_url
 	req = requests.get(url)
 	html = req.content
-	soup = BeautifulSoup(html, 'html.parser')
-	return soup
+	return html
 
-# 뉴스 스크랩 그루핑함수
-def news_merge(news_title, news_img, news_link):
-  # 리스트자르기
+
+def rss_crawling(soup):
+  # 기사 스크랩
+  title = soup.select('item title')
+  images = soup.select('description img')
+  link = soup.select('guid')
+  desc = soup.select('description')
+
+  # 기사 넣을 빈 리스트생성
+  news_title = [news.text for news in title]
+  news_img = [news['src'] for news in images]
+  news_link = [news.text for news in link]
+  news_desc = [news.text for news in desc]
+
   titleList = news_title[0:12]
   imgList = news_img[0:12]
   linkList = news_link[0:12]
+  descList = news_desc[0:12]
 
-  merged = dict([x for x in zip(titleList, zip(imgList, linkList))])
-  return merged
+  dic = {}
+  for i in range(len(titleList)):
+    dic[titleList[i]] = [imgList[i], linkList[i], descList[i]]
+  return dic
 
 def search_main():
-  soup = urlparsing('https://vnexpress.net/')
+  html = urlparsing('https://vnexpress.net/')
+  soup = BeautifulSoup(html, 'html.parser')
 
   # 기사 스크랩
   title = soup.select('.item-news > .thumb-art > a')
@@ -53,21 +67,40 @@ def search_main():
   return dic
 
 def thegioi():
-  soup = urlparsing('https://vnexpress.net/the-gioi')
+  html = urlparsing('https://vnexpress.net/rss/the-gioi.rss')
+  soup = BeautifulSoup(html, 'lxml')
+  dic = rss_crawling(soup)
+  return dic
 
-  # 기사 스크랩
-  title = soup.select('.item-news > .thumb-art > a')
-  images = soup.select('.item-news > .thumb-art > a > picture > img')
-  link = soup.select('.item-news > .thumb-art > a')
+def giaitri():
+  html = urlparsing('https://vnexpress.net/rss/giai-tri.rss')
+  soup = BeautifulSoup(html, 'lxml')
+  dic = rss_crawling(soup)
+  return dic
 
-  # 기사 넣을 빈 리스트생성
-  news_title = [news['title'] for news in title]
-  news_img = [news['src'] for news in images]
-  news_link = [news['href'] for news in link]
+def thethao():
+  html = urlparsing('https://vnexpress.net/rss/the-thao.rss')
+  soup = BeautifulSoup(html, 'lxml')
+  dic = rss_crawling(soup)
+  return dic
 
-  # 딕셔너리화
-  merged = news_merge(news_title, news_img, news_link)
-  return merged
+def congnghe():
+  html = urlparsing('https://vnexpress.net/rss/so-hoa.rss')
+  soup = BeautifulSoup(html, 'lxml')
+  dic = rss_crawling(soup)
+  return dic
+
+def doisong():
+  html = urlparsing('https://vnexpress.net/rss/gia-dinh.rss')
+  soup = BeautifulSoup(html, 'lxml')
+  dic = rss_crawling(soup)
+  return dic
+
+def suckhoe():
+  html = urlparsing('https://vnexpress.net/rss/suc-khoe.rss')
+  soup = BeautifulSoup(html, 'lxml')
+  dic = rss_crawling(soup)
+  return dic
 
 def search_trends():
   url = 'https://trends.google.com/trends/trendingsearches/daily/rss?geo=VN'
@@ -93,5 +126,5 @@ def search_trends():
   return merged
 
 
-answer = search_main()
+answer = thegioi()
 print(answer)

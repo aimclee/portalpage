@@ -91,7 +91,76 @@
                                     {% endfor %}
                                 </ul>
                             </div>
-                            
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in news_giaitri.items %}
+                                    <div class="news-imageNews">
+                                        <a href="{{link.1}}">
+                                            <img src="{{link.0}}" alt="">
+                                            <div>
+                                                <span>{{title}}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in news_thethao.items %}
+                                    <div class="news-imageNews">
+                                        <a href="{{link.1}}">
+                                            <img src="{{link.0}}" alt="">
+                                            <div>
+                                                <span>{{title}}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in news_congnghe.items %}
+                                    <div class="news-imageNews">
+                                        <a href="{{link.1}}">
+                                            <img src="{{link.0}}" alt="">
+                                            <div>
+                                                <span>{{title}}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in news_doisong.items %}
+                                    <div class="news-imageNews">
+                                        <a href="{{link.1}}">
+                                            <img src="{{link.0}}" alt="">
+                                            <div>
+                                                <span>{{title}}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="news-detail">
+                                <ul class="news-line">
+                                    {% for title, link in news_suckhoe.items %}
+                                    <div class="news-imageNews">
+                                        <a href="{{link.1}}">
+                                            <img src="{{link.0}}" alt="">
+                                            <div>
+                                                <span>{{title}}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                </ul>
+                            </div>
                         </div>    
                     </div>
                 </section>

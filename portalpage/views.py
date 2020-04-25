@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import requests
-from .crawling import search_trends, search_main, thegioi
+from .crawling import search_trends, search_main, thegioi, giaitri, thethao, congnghe, doisong, suckhoe
 from .models import mainBanner, rollingBanner, subBanner
 from django.views.decorators.csrf import csrf_exempt
 
@@ -36,6 +36,11 @@ def home(request):
     # 카테고리 서치
     news_main = search_main()
     news_thegioi = thegioi()
+    news_giaitri = giaitri()
+    news_thethao = thethao()
+    news_congnghe = congnghe()
+    news_doisong = doisong()
+    news_suckhoe = suckhoe()
 
     # 랜덤 배너 이미지 로딩
     # bannerImgs = Images.objects.order_by('?')[0]
@@ -46,4 +51,9 @@ def home(request):
         'main_banner':main_banner,
         'sub_banner':sub_banner,
         'news_thegioi':news_thegioi,
+        'news_giaitri':news_giaitri,
+        'news_thethao':news_thethao,
+        'news_congnghe':news_congnghe,
+        'news_doisong':news_doisong,
+        'news_suckhoe':news_suckhoe,
         })
