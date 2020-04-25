@@ -4,6 +4,7 @@ from .crawling import search_trends, search_main, thegioi
 from .models import mainBanner, rollingBanner, subBanner
 from django.views.decorators.csrf import csrf_exempt
 
+
 # 주소 모음
 vnexpress = 'https://vnexpress.net/rss/tin-moi-nhat.rss' #https://vnexpress.net/rss
 thanhnien = 'https://thanhnien.vn/rss/home.rss' #https://thanhnien.vn/rss.html
@@ -35,6 +36,9 @@ def home(request):
     # 카테고리 서치
     news_main = search_main()
     news_thegioi = thegioi()
+
+    # 랜덤 배너 이미지 로딩
+    # bannerImgs = Images.objects.order_by('?')[0]
 
     return render(request, 'home.html',{
         'trends':trends,

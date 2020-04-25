@@ -6,15 +6,15 @@ from bs4.builder import builder_registry
 
 # SSL인증코드
 if hasattr(ssl, '_create_unverified_context'):
-  ssl._create_default_https_context = ssl._create_unverified_context
+	ssl._create_default_https_context = ssl._create_unverified_context
 
 # 사이트 파싱 함수
 def urlparsing(base_url):
-  url = base_url
-  req = requests.get(url)
-  html = req.content
-  soup = BeautifulSoup(html, 'html.parser')
-  return soup
+	url = base_url
+	req = requests.get(url)
+	html = req.content
+	soup = BeautifulSoup(html, 'html.parser')
+	return soup
 
 # 뉴스 스크랩 그루핑함수
 def news_merge(news_title, news_img, news_link):
