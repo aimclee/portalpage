@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 import requests
 from .crawling import search_trends, search_main, thegioi, giaitri, thethao, congnghe, xemnhieu, suckhoe
-from .models import mainBanner, rollingBanner, subBanner
+from .models import mainBanner, rollingBanner, subBanner, accessTrade, reigsterCount
 from django.views.decorators.csrf import csrf_exempt
 
 
@@ -26,8 +26,11 @@ def home(request):
 
     # 배너처리
     main_banner = mainBanner.objects.all().order_by('?')
-    rolling_banner = rollingBanner.objects.all()
+    rolling_banner = rollingBanner.objects.all().order_by('?')
     sub_banner = subBanner.objects.all().order_by('?')
+
+    # 광고
+    adlink = accessTrade.objects.all().order_by('?')
 
     # 구글트렌드 반환
     # searchTrend(googletrend)는 검색어, 조회수 2가지를 반환함
@@ -45,15 +48,20 @@ def home(request):
     # 랜덤 배너 이미지 로딩
     # bannerImgs = Images.objects.order_by('?')[0]
 
+    # 버튼이 눌리면 숫자 카운팅
+    reigster_count = reigsterCount.objects.all()
+
     return render(request, 'home.html',{
         'trends':trends,
         'news_main':news_main,
         'main_banner':main_banner,
         'sub_banner':sub_banner,
+        'rolling_banner':rolling_banner,
         'news_thegioi':news_thegioi,
         'news_giaitri':news_giaitri,
         'news_thethao':news_thethao,
         'news_congnghe':news_congnghe,
         'news_xemnhieu':news_xemnhieu,
         'news_suckhoe':news_suckhoe,
+        'adlink':adlink,
         })

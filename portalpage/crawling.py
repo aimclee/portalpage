@@ -124,6 +124,3 @@ def search_trends():
   trafficList = trafficList[0:10]
   merged = dict([x for x in zip(trendList, trafficList)])
   return merged
-
-a = xemnhieu()
-print(a)

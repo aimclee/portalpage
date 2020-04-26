@@ -16,17 +16,23 @@
         </div>
         <header>
             <div class="logo-container">
-                <img class="logo" src="https://t1.daumcdn.net/daumtop_chanel/op/20170315064553027.png" alt="">
+                <img class="logo" src="{% static 'logo.png' %}" alt="">
             </div>
             <div class="search-container">
                 {% csrf_token %} 
                 <form role="form" class="search-form" action="" method="POST">
                     <input class="search-area" name="keyword" type="text" placeholder="Tìm kiếm với Google">
-                    <input class="btn-search" type="submit">
+                    <input class="btn-search" type="submit" value="">
                 </form>
             </div>
             <div class="rolling-banner-container">
-                광고영역
+                {% for item in rolling_banner %}
+                {% if forloop.counter == 1 %}
+                <a href="{{ item.link }}">
+                    <img src="{{ item.img.url }}" alt="{{ item.title }}">
+                </a>
+                {% endif %}
+                {% endfor %}
             </div>
         </header>
         <main class="body-wrapper">
@@ -65,7 +71,7 @@
                     </div>
                     <div class="user_count">
                         <div></div>
-                        <span>Đã có </span><h3>100,728</h3><span> đang dùng Weli!</span><a>Đặt làm trang chủ</a>
+                        <span>Đã có </span><h3>100,728</h3><span> bạn dùng Weli!</span><a>Đặt làm trang chủ</a>
                     </div>
                     <div class="news-feeds">
                         <div class="news">
@@ -191,16 +197,6 @@
                                         {% endif %}
                                     {% endfor %}
                                 </ul>
-                                <ul class="links">
-                                    <li><img src="data:image/png;base64,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"></li>
-                                    <li><img src="https://i.picsum.photos/id/724/158/86.jpg"></li>
-                                    <li><img src="https://i.picsum.photos/id/724/158/86.jpg"></li>
-                                    <li><img src="https://i.picsum.photos/id/724/158/86.jpg"></li>
-                                    <li><img src="https://i.picsum.photos/id/724/158/86.jpg"></li>
-                                    <li><img src="https://i.picsum.photos/id/724/158/86.jpg"></li>
-                                    <li><img src="https://i.picsum.photos/id/724/158/86.jpg"></li>
-                                    <li><img src="https://i.picsum.photos/id/724/158/86.jpg"></li>
-                                </ul>
                             </div>
                         </div>
                     </div>
@@ -212,8 +208,30 @@
                         {% endfor %}
                     </div>
                     <div class="shopping-list">
-                        <div class="shop-list">
-
+                        <h3>Shopping Trend</h3>
+                        <div class="shopping-category">
+                            <ul>
+                                <li class="active"><a href="">Thời trang nữ</a></li>
+                                <li><a href="">Thời trang nam</a></li>
+                                <li><a href="">Công nghẹ</a></li>
+                                <li><a href="">Đời sống</a></li>
+                                <li><a href="">Xe máy</a></li>
+                                <li><a href="">Điện tử gia dùng</a></li>
+                            </ul>
+                        </div>
+                        <div class="shopping-item">
+                            <ul class="shopping-detail">
+                                {% for item in adlink %}
+                                {% if forloop.counter < 7 %}
+                                <li class="shopping-card">
+                                    <a href="{{ item.link }}">
+                                        <img src="{{ item.img.url }}" alt="">
+                                        <span>{{ item.title|upper }}</span>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
                         </div>
                     </div>
                 </section>
